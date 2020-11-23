@@ -4,7 +4,6 @@
   /* relative position for at de absolut positionerede forslag får korrekt placering.*/
   position: relative;
   width: 100%;
-  max-width: 30em;
 }
 
 .autocomplete-container input {
