@@ -49,7 +49,7 @@ interface Props {
   minLength?: number;
   multiline?: boolean;
   id?: string;
-  value?: string;
+  value?: any;
 }
 
 function DawaAutocomplete2(props: Props) {
@@ -60,7 +60,11 @@ function DawaAutocomplete2(props: Props) {
   const containerEl = React.createRef<HTMLDivElement>();
   const inputEl = React.createRef<HTMLInputElement>();
   
-  inputEl.current.value = props.value;
+ 
+  if (inputEl.current !== null) {
+    inputEl.current.value = props.value
+}
+
   
   const mutationCallback = (mutationsList: any) => {
     for(var mutation of mutationsList) {
