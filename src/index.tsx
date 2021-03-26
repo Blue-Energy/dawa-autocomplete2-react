@@ -39,31 +39,32 @@ interface Classes {
 }
 
 interface Props { 
-  classes?: Classes;
-  select: SelectedCallback;
-  baseUrl?: URL;
-  adgangsadresserOnly?: boolean;
-  fuzzy?: boolean;
-  params?: Object;
-  stormodtagerpostnumre?: boolean;
-  minLength?: number;
-  multiline?: boolean;
-  id?: string;
-  value?: any;
+  classes?: Classes
+  select: SelectedCallback
+  baseUrl?: URL
+  adgangsadresserOnly?: boolean
+  fuzzy?: boolean
+  params?: Object
+  stormodtagerpostnumre?: boolean
+  minLength?: number
+  multiline?: boolean
+  id?: string
+  value?: any
 }
 
 function DawaAutocomplete2(props: Props) {
   const { 
-    classes, 
+    classes,
+    value,
     ...rest
   } = props;
   const containerEl = React.createRef<HTMLDivElement>();
   const inputEl = React.createRef<HTMLInputElement>();
+
+  if(inputEl.current != null){
+    inputEl.current.value = value
+  }
   
- 
-  if (inputEl.current !== null) {
-    inputEl.current.value = props.value
-}
 
   
   const mutationCallback = (mutationsList: any) => {
@@ -103,7 +104,7 @@ function DawaAutocomplete2(props: Props) {
 
   return (
     <div className={classNames(styles['autocomplete-container'], classes && classes.root)} ref={containerEl}>
-      <input className={classNames(classes && classes.input)} type="text" ref={inputEl}/>
+      <input className={classNames(classes && classes.input)} type="text" ref={inputEl} value={value}/>
     </div>
   )
 }
